@@ -8,24 +8,23 @@ import (
 	"github.com/chowdhuryrahulc/oman-task/src/main/models"
 )
 
-type IExchangeApiServiceClient interface {
+type IExchangeApiClient interface {
 	GetExchangeApiResponse() (*models.ExchangeAPIResponse, error)
 }
 
-type ExchangeApiServiceClient struct {
+type ExchangeApiClient struct {
 	eprModel models.IExchangeApiResponseModel
 }
 
-func NewExchangeApiServiceClient(clientConfig *config.ExchangeApiConfig) *ExchangeApiServiceClient {
-	return &ExchangeApiServiceClient{}
+func NewExchangeApiClient(clientConfig *config.ExchangeApiConfig) *ExchangeApiClient {
+	return &ExchangeApiClient{}
 }
 
-func (epsc *ExchangeApiServiceClient) GetExchangeApiResponse() (*models.ExchangeAPIResponse) {
+func (epsc *ExchangeApiClient) GetExchangeApiResponse() *models.ExchangeAPIResponse {
 	byte := epsc.eprModel.Get()
 	model := MarshalExchangeApiResponseToStruct(byte)
 	return model
 }
-
 
 func MarshalExchangeApiResponseToStruct(res []byte) *models.ExchangeAPIResponse {
 	exchangeApiResponse := &models.ExchangeAPIResponse{}

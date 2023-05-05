@@ -3,8 +3,8 @@ package service
 import (
 	log "github.com/sirupsen/logrus"
 
-	"github.com/chowdhuryrahulc/oman-task/src/main/models"
 	"github.com/chowdhuryrahulc/oman-task/src/main/client/upstream"
+	"github.com/chowdhuryrahulc/oman-task/src/main/models"
 )
 
 // IExchangeApiService ...
@@ -13,10 +13,10 @@ type IExchangeApiService interface {
 }
 
 type ExchangeApiService struct {
-	epsClient upstream.IExchangeApiServiceClient
+	epsClient upstream.IExchangeApiClient
 }
 
-func NewExchangeApiService(epsClient upstream.IExchangeApiServiceClient) *ExchangeApiService {
+func NewExchangeApiService(epsClient upstream.IExchangeApiClient) *ExchangeApiService {
 	return &ExchangeApiService{
 		epsClient: epsClient,
 	}

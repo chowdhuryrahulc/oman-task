@@ -20,6 +20,7 @@ func NewAppConfig() *Config {
 	onceAppConfig.Do(func() {
 		_, _ = env.UnmarshalFromEnviron(&appConfig)
 		appConfig.PostgressConfig = NewPostgressConfig()
+		appConfig.ExchangeApiConfig = NewExchangeApiConfig()
 	})
 
 	return &appConfig
